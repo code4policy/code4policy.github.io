@@ -130,16 +130,27 @@ main { padding: 0 var(--gutter) 6rem; }
 .hero { padding: clamp(3.5rem, 10vw, 7rem) 0 clamp(2rem, 4vw, 3rem); }
 
 .hero h1 {
-  font-size: clamp(2.25rem, 6.2vw, 4.75rem);
+  font-size: clamp(2.75rem, 8vw, 5.75rem);
   font-weight: 300;
   font-variation-settings: "SOFT" 20, "WONK" 1;
   line-height: 1;
   letter-spacing: -0.02em;
-  margin: 0 0 1.75rem;
-  max-width: 20ch;
+  margin: 0 0 0.9rem;
 }
 
-.hero h1 em {
+.hero .subtitle {
+  margin: 0;
+  max-width: 30ch;
+  /* Balanced so the wrap does not split "Public Services". */
+  text-wrap: balance;
+  font-size: clamp(1.35rem, 3.4vw, 2.35rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+}
+
+.hero .subtitle em {
   font-style: italic;
   color: var(--crimson);
 }
