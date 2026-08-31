@@ -230,82 +230,109 @@ main { padding: 0 var(--gutter) 6rem; }
   letter-spacing: 0.08em;
 }
 
-.year ol {
+.gallery {
   list-style: none;
   margin: 0;
   padding: 0;
   counter-reset: proj;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17.5rem), 1fr));
+  gap: clamp(1.75rem, 3.5vw, 2.75rem) clamp(1.25rem, 2.5vw, 2rem);
 }
 
-.year li {
-  counter-increment: proj;
-  border-top: 1px solid var(--rule);
-}
+.gallery li { counter-increment: proj; }
 
-.year li:first-child { border-top: 0; }
-
-.year a,
-.year .unlinked {
+.gallery a,
+.gallery .unlinked {
   display: flex;
-  align-items: baseline;
-  gap: 1.25rem;
-  padding: 1.15rem 0.75rem 1.15rem 0;
+  flex-direction: column;
+  height: 100%;
   text-decoration: none;
-  transition: padding-left 0.25s ease, background 0.25s;
 }
 
-.year a::before,
-.year .unlinked::before {
-  content: counter(proj, decimal-leading-zero);
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  color: var(--muted);
-  flex: none;
-  width: 2rem;
-  padding-top: 0.35rem;
-}
+/* Screenshot ------------------------------------------------ */
 
-.year .title {
-  font-size: clamp(1.25rem, 2.6vw, 1.75rem);
-  line-height: 1.25;
-  flex: 1 1 auto;
-}
-
-.year a:hover {
-  padding-left: 0.9rem;
+.shot {
+  display: block;
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
   background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  transition: border-color 0.25s, box-shadow 0.3s;
 }
 
-.year a:hover .title { color: var(--crimson); }
+.shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  filter: saturate(0.9);
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.3, 1), filter 0.35s;
+}
 
-.year a .visit {
+/* The index number sits in the corner of the frame. */
+.shot::after {
+  content: counter(proj, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 0.3rem 0.5rem;
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--paper);
+  background: rgba(23, 20, 15, 0.72);
+}
+
+.gallery a:hover .shot,
+.gallery a:focus-visible .shot {
+  border-color: var(--crimson);
+  box-shadow: 0 0.6rem 1.6rem rgba(23, 20, 15, 0.13);
+}
+
+.gallery a:hover .shot img,
+.gallery a:focus-visible .shot img {
+  transform: scale(1.04);
+  filter: saturate(1);
+}
+
+.offline {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  font-family: var(--mono);
+  font-size: 0.68rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--crimson);
-  flex: none;
-  opacity: 0;
-  transform: translateX(-0.4rem);
-  transition: opacity 0.25s, transform 0.25s;
-}
-
-.year a:hover .visit,
-.year a:focus-visible .visit {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.unlinked .title { color: var(--muted); }
-
-.unlinked .note {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--muted);
-  flex: none;
 }
+
+/* Caption --------------------------------------------------- */
+
+.gallery .title {
+  display: block;
+  margin-top: 0.9rem;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  transition: color 0.2s;
+}
+
+.gallery a:hover .title,
+.gallery a:focus-visible .title { color: var(--crimson); }
+
+.gallery .blurb {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.gallery .unlinked .title,
+.gallery .unlinked .blurb { color: var(--muted); }
 
 /* --- Course description --------------------------------------------------- */
 
@@ -379,7 +406,6 @@ main { padding: 0 var(--gutter) 6rem; }
     gap: 1.25rem;
   }
   .year > h2 { position: static; }
-  .year a .visit { display: none; }
 }
 
 :focus-visible {
