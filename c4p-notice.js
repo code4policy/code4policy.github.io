@@ -26,17 +26,19 @@
 
     var css = document.createElement('style');
     css.textContent =
-      '#c4p-notice{position:fixed;inset:0;z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:20px;' +
+      '#c4p-notice,#c4p-notice *{box-sizing:border-box!important;font-family:Arial,Helvetica,sans-serif!important;text-transform:none!important;letter-spacing:normal!important;text-shadow:none!important;float:none!important;position:static;width:auto;max-width:none;height:auto;min-height:0;border:0;background:none;margin:0;padding:0;text-align:left!important;text-decoration:none;}' +
+      '#c4p-notice h2::before,#c4p-notice h2::after,#c4p-notice p::before,#c4p-notice p::after{content:none!important;display:none!important;}' +
+      '#c4p-notice{position:fixed!important;inset:0;z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:20px;' +
       'background:rgba(15,23,42,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-family:Arial,Helvetica,sans-serif;}' +
-      '#c4p-notice .c4p-card{box-sizing:border-box;max-width:560px;width:100%;background:rgba(255,255,255,.96);color:#1e293b;' +
-      'border-radius:12px;border-top:8px solid #b45309;padding:28px 28px 24px;box-shadow:0 20px 50px rgba(0,0,0,.35);text-align:left;}' +
-      '#c4p-notice .c4p-kicker{margin:0 0 6px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#b45309;}' +
-      '#c4p-notice h2{margin:0 0 14px;font-size:24px;line-height:1.25;color:#0f172a;font-weight:700;}' +
-      '#c4p-notice p{margin:0 0 12px;font-size:16px;line-height:1.55;}' +
-      '#c4p-notice a{color:#92400e;}' +
-      '#c4p-notice button{margin-top:10px;width:100%;padding:14px 18px;border:0;border-radius:8px;background:#0f172a;color:#fff;' +
-      'font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;}' +
-      '#c4p-notice button:hover,#c4p-notice button:focus-visible{background:#b45309;outline:3px solid #fcd34d;outline-offset:2px;}';
+      '#c4p-notice .c4p-card{max-width:560px!important;width:100%!important;background:rgba(255,255,255,.96)!important;color:#1e293b!important;' +
+      'border-radius:12px!important;border-top:8px solid #b45309!important;padding:28px 28px 24px!important;box-shadow:0 20px 50px rgba(0,0,0,.35);text-align:left;}' +
+      '#c4p-notice .c4p-kicker{margin:0 0 6px!important;font-size:13px!important;font-weight:700!important;letter-spacing:.08em!important;text-transform:uppercase!important;color:#b45309!important;}' +
+      '#c4p-notice h2{margin:0 0 14px!important;font-size:24px!important;line-height:1.25!important;color:#0f172a!important;font-weight:700!important;border:0!important;background:none!important;}' +
+      '#c4p-notice p{margin:0 0 12px!important;font-size:16px!important;line-height:1.55!important;color:#1e293b!important;}' +
+      '#c4p-notice a{color:#92400e!important;text-decoration:underline!important;}' +
+      '#c4p-notice button{display:block!important;margin-top:10px!important;width:100%!important;padding:14px 18px!important;border:0!important;border-radius:8px!important;background:#0f172a!important;color:#fff!important;text-align:center!important;' +
+      'font-size:16px!important;font-weight:700!important;cursor:pointer;line-height:1.3!important;}' +
+      '#c4p-notice button:hover,#c4p-notice button:focus-visible{background:#b45309!important;outline:3px solid #fcd34d!important;outline-offset:2px!important;}';
     document.head.appendChild(css);
 
     var made = 'It was made by Harvard Kennedy School students in the Code4Policy course' +
